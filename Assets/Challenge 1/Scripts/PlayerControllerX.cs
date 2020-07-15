@@ -31,7 +31,7 @@ public class PlayerControllerX : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // get the user's vertical input
         _elevation = Input.GetAxis("Vertical") * -1.0f;
