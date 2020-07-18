@@ -20,7 +20,7 @@ public class FollowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _initialDistance = Player.transform.position + transform.position;
+        _initialDistance = transform.position - Player.transform.position;
     }
 
     // Update is called once per frame

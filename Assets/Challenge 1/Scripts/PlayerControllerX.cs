@@ -33,9 +33,10 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ResetIfRequested();
         // get the user's vertical input
-        _elevation = Input.GetAxis("Vertical") * -1.0f;
-        _rotation = Input.GetAxis("Horizontal");
+        _elevation = Input.GetAxis("Elevation") * -1.0f;
+        _rotation = Input.GetAxis("Rotation");
         _tilt = Input.GetAxis("Tilt");
 
         // move the plane forward at a constant rate
@@ -45,5 +46,13 @@ public class PlayerControllerX : MonoBehaviour
         transform.Rotate(Vector3.right * (Time.deltaTime * _elevation * rotationSpeed));
         transform.Rotate(Vector3.up * (Time.deltaTime * _rotation * rotationSpeed));
         transform.Rotate(Vector3.forward * (Time.deltaTime * _tilt * rotationSpeed));
+    }
+    
+    private static void ResetIfRequested()
+    {
+        if (Input.GetButtonDown("Reset"))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
     }
 }
